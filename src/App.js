@@ -4,17 +4,14 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
 
-function shuffleCards(array){
-  let shuffledArray = array.map(function(newArr) {
-    for(let i = array.length - 1; i >= 0; i--){
-      const j = Math.floor(Math.random() * i)
-    const temp = array[i]
-    array[i] = array[j]
-    array[j] = temp
-    }
-    return newArr;
-  })
-  console.log(shuffledArray);
+//"Friend" shuffle function
+function shuffleCards(array) {
+  let newArr = array.slice(0); //Create new temp Array from state.friends.
+  for (let i = newArr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+  }
+  return newArr;
 }
 
 
