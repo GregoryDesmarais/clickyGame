@@ -15,8 +15,6 @@ function shuffleCards(array) {
   return newArr;
 }
 
-
-
 class App extends Component {
   state = {
     friends,
@@ -72,15 +70,16 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>clickyGame</Title>
-        {this.state.shuffledFriends.map(friend => (
-          <FriendCard
-            playGame={this.playGame}
-            id={friend.id}
-            key={friend.id}
-            image={friend.image}
-          />
-        ))}
+        <Title> clickyGame </Title> {
+          this.state.shuffledFriends.map(friend => (
+            <FriendCard
+              playGame={this.playGame}
+              id={friend.id}
+              key={friend.id}
+              image={friend.image}
+            />
+          ))
+        }
         <Footer
           feedback={this.state.feedback}
           score={this.state.score}
