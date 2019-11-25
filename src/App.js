@@ -22,11 +22,17 @@ class App extends Component {
     score: 0,
     highScore: 0,
     selectedCards: [],
-    feedback: ""
+    feedback: "",
+    active: true
   };
 
   playGame = (id) => {
-    if (this.state.selectedCards.indexOf(id) === -1) {
+    // Check if game state is not active.  If not, reset game.
+    if (!this.state.active) {
+      this.resetGame(false);
+    }
+    // Game is active, selected card is not in selectedCards list.
+    else if (this.state.selectedCards.indexOf(id) === -1) {
       let tempArray = this.state.selectedCards;
       tempArray.push(id);
       this.setState({
@@ -35,27 +41,30 @@ class App extends Component {
         feedback: "Keep going!",
         score: this.state.score + 1
       })
-      console.log(this.state)
-    } else if (this.state.score === 12) {
+      if (this.state.score === 12) {
+        this.setState({
+          feedback: "You've won! Click here to play again!"
+        })
+      }
+    } 
+    // Card has already been selected.  Show feedback, and set game to false to prevent additional plays on the current game.
+    else {
       this.setState({
-        feedback: "You've won! Click here to play again!"
+        feedback: "Sorry, that card has already been selected.  Click here to play again!",
+        active: false
       })
-    } else {
-      this.setState({
-        feedback: "Sorry, that card has already been selected.  Click here to play again!"
-      })
-      this.resetGame();
     }
   }
 
-  resetGame = () => {
-    if (this.state.feedback.indexOf("Sorry") > -1 || this.state.feedback.indexOf("You've") > -1) {
+  resetGame = (state) => {
+    if (this.state.feedback.indexOf("Sorry") > -1 || this.state.feedback.indexOf("You've") > -1 || !state) {
       this.setState({
         highScore: this.state.score,
         score: 0,
         selectedCards: [],
         feedback: "",
-        shuffledFriends: shuffleCards(this.state.friends)
+        shuffledFriends: shuffleCards(this.state.friends),
+        active: true
       })
     }
   }
