@@ -17,23 +17,14 @@ function shuffleCards(array) {
 
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
   state = {
     friends,
+    shuffledFriends: [],
     score: 0,
     highScore: 0,
-    selectedCards: []
+    selectedCards: [],
+    feedback: ""
   };
-
-  
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
-
-  componentDidMount = () => shuffleCards(this.state.friends);
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
