@@ -4,6 +4,21 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
 
+function shuffleCards(array){
+  let shuffledArray = array.map(function(newArr) {
+    for(let i = array.length - 1; i >= 0; i--){
+      const j = Math.floor(Math.random() * i)
+    const temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+    }
+    return newArr;
+  })
+  console.log(shuffledArray);
+}
+
+
+
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
@@ -13,12 +28,15 @@ class App extends Component {
     selectedCards: []
   };
 
+  
   removeFriend = id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
     const friends = this.state.friends.filter(friend => friend.id !== id);
     // Set this.state.friends equal to the new friends array
     this.setState({ friends });
   };
+
+  componentDidMount = () => shuffleCards(this.state.friends);
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
