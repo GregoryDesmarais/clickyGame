@@ -1,7 +1,6 @@
-span,
 div {
     width: 100%;
     text-align: center;
-    font-size: 2rem;
-    color: #2A77AE;
+    font-size: 1.5vw;
+    color: white;
 }

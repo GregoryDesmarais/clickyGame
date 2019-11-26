@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
-import Footer from "./components/Footer";
+import Container from "./components/Container";
+import Row from "./components/Row";
+import Col from "./components/Col";
+import Instructions from "./components/Instructions";
+import Navbar from "./components/Navbar";
 import friends from "./friends.json";
 
 //"Friend" shuffle function
@@ -43,14 +46,14 @@ class App extends Component {
       })
       if (this.state.score === 12) {
         this.setState({
-          feedback: "You've won! Click here to play again!"
+          feedback: "You've won!"
         })
       }
-    } 
+    }
     // Card has already been selected.  Show feedback, and set game to false to prevent additional plays on the current game.
     else {
       this.setState({
-        feedback: "Sorry, that card has already been selected.  Click here to play again!",
+        feedback: "You've lost the game!",
         active: false
       })
     }
@@ -78,24 +81,36 @@ class App extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <Title> clickyGame </Title> {
-          this.state.shuffledFriends.map(friend => (
-            <FriendCard
-              playGame={this.playGame}
-              id={friend.id}
-              key={friend.id}
-              image={friend.image}
-            />
-          ))
-        }
-        <Footer
-          feedback={this.state.feedback}
-          score={this.state.score}
-          highScore={this.state.highScore}
-          resetGame={this.resetGame}
-        />
-      </Wrapper>
+      <div>
+        <Navbar>
+          <Container class="fluid">
+            <Row>
+              <Col class="col-4 text-left">
+                clickyGame
+              </Col>
+              <Col class="col-4 text-center feedback">
+               {this.state.feedback}
+              </Col>
+              <Col class="col-4 text-right">
+                Score: {this.state.score} | High Score: {this.state.highScore}
+              </Col>
+            </Row>
+          </Container>
+        </Navbar>
+        <Instructions/>
+        <Wrapper>
+          {
+            this.state.shuffledFriends.map(friend => (
+              <FriendCard
+                playGame={this.playGame}
+                id={friend.id}
+                key={friend.id}
+                image={friend.image}
+              />
+            ))
+          }
+        </Wrapper>
+      </div>
     );
   }
 }
