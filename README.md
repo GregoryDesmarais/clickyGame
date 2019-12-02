@@ -1,5 +1,5 @@
 # clickyGame
-
+    
 [View deployment on GitHub Pages](https://gregorydesmarais.github.io/clickyGame/)
 
 In this React application, the goal is to click the character portraits to earn points.  However, if the user clicks the same character more than one, the game is over!

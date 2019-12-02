@@ -61,8 +61,12 @@ class App extends Component {
 
   resetGame = (state) => {
     if (this.state.feedback.indexOf("Sorry") > -1 || this.state.feedback.indexOf("You've") > -1 || !state) {
+      if(this.state.score > this.state.highScore){
+        this.setState({
+          highScore: this.state.score
+        })
+      }
       this.setState({
-        highScore: this.state.score,
         score: 0,
         selectedCards: [],
         feedback: "",
