@@ -53,7 +53,7 @@ class App extends Component {
     // Card has already been selected.  Show feedback, and set game to false to prevent additional plays on the current game.
     else {
       this.setState({
-        feedback: "You've lost the game!",
+        feedback: "You've lost the game! Click any picutre to try again!",
         active: false
       })
     }
@@ -61,7 +61,7 @@ class App extends Component {
 
   resetGame = (state) => {
     if (this.state.feedback.indexOf("Sorry") > -1 || this.state.feedback.indexOf("You've") > -1 || !state) {
-      if(this.state.score > this.state.highScore){
+      if (this.state.score > this.state.highScore) {
         this.setState({
           highScore: this.state.score
         })
@@ -89,20 +89,21 @@ class App extends Component {
         <Navbar>
           <Container class="fluid">
             <Row>
-              <Col class="col-4 text-left">
+              <Col class="col-12 text-Center">
                 clickyGame
-              </Col>
-              <Col class="col-4 text-center feedback">
-               {this.state.feedback}
-              </Col>
-              <Col class="col-4 text-right">
-                Score: {this.state.score} | High Score: {this.state.highScore}
               </Col>
             </Row>
           </Container>
         </Navbar>
-        <Instructions/>
+        <Instructions />
         <Wrapper>
+          <Row>
+            <Col class="col-4" />
+            <Col class="col-4 text-center info">
+              Score: {this.state.score} | High Score: {this.state.highScore}
+            </Col>
+            <Col class="col-4" />
+          </Row>
           {
             this.state.shuffledFriends.map(friend => (
               <FriendCard
@@ -113,6 +114,13 @@ class App extends Component {
               />
             ))
           }
+          <Row>
+            <Col class="col-2" />
+            <Col class="col-8 pl-4 text-center info">
+              &nbsp;{this.state.feedback}
+            </Col>
+            <Col class="col-2" />
+          </Row>
         </Wrapper>
       </div>
     );
