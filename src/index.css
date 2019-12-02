@@ -13,5 +13,6 @@ body,
 }
 
 .info{
-    background-color: darkslategrey
+    background-color: darkslategrey;
+    margin-bottom: 1em;
 }

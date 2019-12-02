@@ -53,7 +53,7 @@ class App extends Component {
     // Card has already been selected.  Show feedback, and set game to false to prevent additional plays on the current game.
     else {
       this.setState({
-        feedback: "You've lost the game! Click any picutre to try again!",
+        feedback: "You've lost the game! Click any picture to try again!",
         active: false
       })
     }
@@ -104,6 +104,13 @@ class App extends Component {
             </Col>
             <Col class="col-4" />
           </Row>
+          <Row>
+            <Col class="col-2" />
+            <Col class="col-8 pl-4 text-center info">
+              &nbsp;{this.state.feedback}
+            </Col>
+            <Col class="col-2" />
+          </Row>
           {
             this.state.shuffledFriends.map(friend => (
               <FriendCard
@@ -114,13 +121,7 @@ class App extends Component {
               />
             ))
           }
-          <Row>
-            <Col class="col-2" />
-            <Col class="col-8 pl-4 text-center info">
-              &nbsp;{this.state.feedback}
-            </Col>
-            <Col class="col-2" />
-          </Row>
+
         </Wrapper>
       </div>
     );

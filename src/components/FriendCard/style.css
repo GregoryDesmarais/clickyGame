@@ -1,10 +1,10 @@
 .card {
     background: #6CADDC;
     border-radius: 2px;
-    height: 250px;
+    height: 12vw;
     margin: 1rem;
     position: relative;
-    width: 225px;
+    width: 12vw;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     text-align: left;
 }
@@ -18,7 +18,7 @@
 }
 
 .card>.img-container>img {
-    width: 60%
+    width: 12vw;
 }
 
 .card>.content {
