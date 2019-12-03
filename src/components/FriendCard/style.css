@@ -2,7 +2,7 @@
     background: #6CADDC;
     border-radius: 2px;
     height: 12vw;
-    margin: 1rem;
+    margin: .5rem;
     position: relative;
     width: 12vw;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
@@ -18,7 +18,7 @@
 }
 
 .card>.img-container>img {
-    width: 12vw;
+    width: 8vw;
 }
 
 .card>.content {
@@ -47,3 +47,16 @@
 .card>.remove:hover {
     color: #d50000;
 }
+
+@media only screen and (max-height: 1080px) {
+    .card {
+        background: #6CADDC;
+        border-radius: 2px;
+        height: 10vw;
+        margin: .5rem;
+        position: relative;
+        width: 10vw;
+        box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+        text-align: left;
+    }
+  }
